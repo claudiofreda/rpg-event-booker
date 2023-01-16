@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  handle    String    @unique
+  firstName String?
+  lastName  String?
+  gender    String?
+  bio       String?
+  bookings  Booking[]
+  organizerOf Event[]
+  facilitatorOf Session[]
+  isAdmin   Boolean   @default(false)
+  trustLevel Int      @default(0)
+}
+
+model Event {
+  id        Int       @id @default(autoincrement())
+  slots     Slot[]
+  name      String    @unique
+  description String
+  startTime DateTime
+  endTime   DateTime
+  organizers User[]
+}
+
+model Slot {
+  id        Int       @id @default(autoincrement())
+  eventId   Int
+  startTime DateTime
+  endTime   DateTime
+  event     Event     @relation(fields: [eventId], references: [id])
+  sessions  Session[]
+}
+
+model Session {
+  id              Int       @id @default(autoincrement())
+  slotId          Int
+  slot            Slot      @relation(fields: [slotId], references: [id])
+  facilitatorId   Int
+  facilitator     User      @relation(fields: [facilitatorId], references: [id])
+  minBookings     Int?
+  maxBookings     Int       @default(5)
+  name            String
+  game            String
+  description     String
+  bookings        Booking[]
+}
+
+model Booking {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  user      User      @relation(fields: [userId], references: [id])
+  sessionId Int
+  session   Session   @relation(fields: [sessionId], references: [id])   
+
+  @@unique([userId, sessionId])
+}

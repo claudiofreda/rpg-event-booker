@@ -1,6 +1,6 @@
-<script>
-    export let data;
-    let tweet;
+<script lang="ts">
+    export let data: any;
+    let tweet: String;
 </script>
 
 <div class="compose">

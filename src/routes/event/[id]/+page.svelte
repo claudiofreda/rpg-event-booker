@@ -1,10 +1,10 @@
-<script>
-    export let data;
+<script lang="ts">
+    export let data : any;
     import SessionGrid from '$root/components/SessionGrid.svelte';
     import FormattedTime from '$root/components/FormattedTime.svelte';
     import FormattedDate from '$root/components/FormattedDate.svelte';
 
-    let facilitators = data.event.slots.flatMap( (slot) => slot.sessions ).map( (session) => session.facilitator );
+    let facilitators = data.event.slots.flatMap( (slot: any) => slot.sessions ).map( (session: any) => session.facilitator );
 
 </script>
 

@@ -1,6 +1,6 @@
 <script lang="ts">
     import Session from '$root/components/Session.svelte';
-    export let sessions;
+    export let sessions: any;
 </script>
 
 <style>

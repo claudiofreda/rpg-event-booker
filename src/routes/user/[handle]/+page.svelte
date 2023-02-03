@@ -1,29 +1,29 @@
-<script>
-    export let data;
+<script lang="ts">
+    export let data: any;
     import SessionGrid from '$root/components/SessionGrid.svelte';
     import FormattedTime from '$root/components/FormattedTime.svelte';
     import FormattedDate from '$root/components/FormattedDate.svelte';
 
-    function uniqBy(array, fnKey) {
-        var seen = {};
-        return array.filter(function(item) {
+    function uniqBy(array: any, fnKey: any) {
+        var seen: any = {};
+        return array.filter(function(item: any) {
             var key = fnKey(item);
             return seen.hasOwnProperty(key) ? false : (seen[key] = true);
         })
     }
 
-    function getEvents(sessions) {
-        const slots = sessions.flatMap( (session) => session.slot )
-        const slotsFiltered = uniqBy( slots, (slot) => slot.id )
-        const events = slots.flatMap( (slot) => slot.event )
-        return uniqBy( events, (event) => event.id )
+    function getEvents(sessions: any) {
+        const slots = sessions.flatMap( (session: any) => session.slot )
+        const slotsFiltered = uniqBy( slots, (slot: any) => slot.id )
+        const events = slots.flatMap( (slot: any) => slot.event )
+        return uniqBy( events, (event: any) => event.id )
     }
     
     const sessions = data.user.facilitatorOf;
     const eventsFiltered = getEvents(sessions)
     const sessionPerEvent = eventsFiltered.map(
-        (event) => sessions.filter(
-            (session) => session.slot.event.id == event.id
+        (event: any) => sessions.filter(
+            (session: any) => session.slot.event.id == event.id
         )
     );
 </script>

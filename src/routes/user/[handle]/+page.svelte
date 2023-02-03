@@ -3,7 +3,6 @@
     import SessionGrid from '$root/components/SessionGrid.svelte';
     import FormattedTime from '$root/components/FormattedTime.svelte';
     import FormattedDate from '$root/components/FormattedDate.svelte';
-    import Navbar from '$root/components/Navbar.svelte';
 
     function uniqBy(array, fnKey) {
         var seen = {};
@@ -28,8 +27,6 @@
         )
     );
 </script>
-
-<Navbar />
 
 <h1>Profilo utente: {data.user.handle}</h1>
 

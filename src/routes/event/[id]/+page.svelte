@@ -3,13 +3,10 @@
     import SessionGrid from '$root/components/SessionGrid.svelte';
     import FormattedTime from '$root/components/FormattedTime.svelte';
     import FormattedDate from '$root/components/FormattedDate.svelte';
-    import Navbar from '$root/components/Navbar.svelte';
 
     let facilitators = data.event.slots.flatMap( (slot) => slot.sessions ).map( (session) => session.facilitator );
 
 </script>
-
-<Navbar />
 
 <h1>{data.event.name} (<FormattedDate date = {data.event.startTime}/>): Lista sessioni</h1>
 

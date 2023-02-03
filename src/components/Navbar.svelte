@@ -3,13 +3,15 @@
 </script>
 
 <nav>
-    <a href="/">Home</a>
-    |
-    {#if loggedIn}
-        <a href="">Log Out</a>
-        |
-        <a href="">My Profile</a>
-    {:else}
-        <a href="">Log In</a>
-    {/if}
+    <ul>
+        <li><strong><a href="/">Piattaforma di Iscrizione Eventi</a></strong></li>
+    </ul>
+    <ul>
+        {#if loggedIn}
+            <li><a href="">Log Out</a></li>
+            <li><a href="">My Profile</a></li>
+        {:else}
+            <li><button href="">Log In</button></li>
+        {/if}
+    </ul>
 </nav>

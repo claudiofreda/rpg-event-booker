@@ -6,18 +6,15 @@
 
 <style>
 .session {
-    border-radius: 1em;
-    border: 1px solid grey;
-    padding: 1em;
     max-width: 45em;
+}
+
+.session > header > h1,h2,h3,h4,h5,h6 {
+    margin: 0;
 }
 
 .session :global(p) {
     margin: 0.5em 0;
-}
-
-.session > h1 {
-    margin: 0;
 }
 
 .description > h3 {
@@ -40,8 +37,10 @@
 
 </style>
 
-<div class="session">
-    <h1>{session.name}</h1>
+<article class="session">
+    <header>
+        <h3>{session.name}</h3>
+    </header>
     <p>
         <strong>GM/Facilitatore</strong>: 
         {#if showFacilitator}
@@ -56,7 +55,7 @@
         <p><strong>Iscritti:</strong> {session.bookings.length} su {session.maxBookings} </p> <button>Iscriviti</button>
     </div>
     <div class="description">
-        <h3>Descrizione</h3>
+        <h4>Descrizione</h4>
         {@html session.description}
     </div>
-</div>
+</article>

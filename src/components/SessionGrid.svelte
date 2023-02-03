@@ -4,17 +4,41 @@
 </script>
 
 <style>
+    :global(h1)+.sessions-grid {
+        margin-top: -0.5em;
+    }
+
+    :global(h2)+.sessions-grid {
+        margin-top: -0.5em;
+    }
+
+    :global(h3)+.sessions-grid {
+        margin-top: -0.25em;
+    }
+
+    :global(h4)+.sessions-grid {
+        margin-top: -0.25em;
+    }
+
     .sessions-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(25em, 1fr));
+        grid-template-columns: 1fr 1fr;
         gap: 1em;
-        padding: 1em;
-        max-width: 120em;
+    }
+
+    @media (max-width: 992px) {
+        .sessions-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .sessions-grid :global(article) {
+        margin: 0;
     }
 </style>
 
 <div class="sessions-grid">
-{#each sessions as session}
-    <Session session={session} />
-{/each}
+    {#each sessions as session}
+        <Session session={session} />
+    {/each}
 </div>

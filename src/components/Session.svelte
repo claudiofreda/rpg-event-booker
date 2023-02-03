@@ -9,36 +9,37 @@
     max-width: 45em;
 }
 
-.session > header > h1,h2,h3,h4,h5,h6 {
+header {
+    margin-bottom: 1rem;
+}
+
+footer {
+    margin-top: 1rem;
+}
+
+footer button {
     margin: 0;
 }
 
-.session :global(p) {
-    margin: 0.5em 0;
+header > :is(h1,h2,h3,h4,h5,h6) {
+    margin: 0;
+    text-align: center;
 }
 
-.description > h3 {
-    margin-bottom: 0;
+:is(h1,h2,h3,h4,h5,h6) {
+    margin-top: var(--typography-spacing-vertical);
 }
 
-.signups {
+.buttons {
     display: grid;
-    grid-template-columns: 1fr min-content;
-}
-
-.signups > button {
-    height: fit-content;
-    margin: auto;
-}
-
-.signups > p {
-    margin: 0;
+    grid-template-columns: repeat(auto-fit,minmax(0%,1fr));;
+    gap: 1rem;
 }
 
 </style>
 
 <article class="session">
-    <header>
+    <header> 
         <h3>{session.name}</h3>
     </header>
     <p>
@@ -51,11 +52,15 @@
         {/if}
     </p>
     <p><strong>Gioco</strong>: {session.game}</p>
-    <div class="signups">
-        <p><strong>Iscritti:</strong> {session.bookings.length} su {session.maxBookings} </p> <button>Iscriviti</button>
-    </div>
+    <p><strong>Iscritti:</strong> {session.bookings.length} su {session.maxBookings} </p> 
     <div class="description">
-        <h4>Descrizione</h4>
         {@html session.description}
     </div>
+    <footer>
+        <div class="buttons">
+            <button>Cancella</button>
+            <button>Modifica</button>
+            <button>Iscriviti</button>
+        </div>
+    </footer>
 </article>

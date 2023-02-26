@@ -4,20 +4,9 @@
 </script>
 
 <style>
-    :global(h1)+.sessions-grid {
-        margin-top: -0.5em;
-    }
-
-    :global(h2)+.sessions-grid {
-        margin-top: -0.5em;
-    }
-
-    :global(h3)+.sessions-grid {
-        margin-top: -0.25em;
-    }
-
-    :global(h4)+.sessions-grid {
-        margin-top: -0.25em;
+    :global(:is(h1, h2, h3, h4, h5))+.sessions-grid
+    {
+        margin-top: -0.5rem;
     }
 
     .sessions-grid {

@@ -2,10 +2,10 @@
     export let time: Date
     
     function formatTime(date: Date) {
-        var hours = date.getHours();
-        var minutes = date.getMinutes();
-        minutes = minutes < 10 ? '0'+minutes : minutes;
-        var strTime = hours + ':' + minutes + ' ';
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let minutesString = minutes < 10 ? '0'+minutes : minutes;
+        let strTime = hours + ':' + minutesString + ' ';
         return strTime;
     }
 </script>

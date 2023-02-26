@@ -1,42 +1,8 @@
 <script lang="ts">
-    export let session;
+    export let session: any;
     export let showFacilitator = true;
     export let showEvent = false;
 </script>
-
-<style>
-.session {
-    max-width: 45em;
-}
-
-header {
-    margin-bottom: 1rem;
-}
-
-footer {
-    margin-top: 1rem;
-}
-
-footer button {
-    margin: 0;
-}
-
-header > :is(h1,h2,h3,h4,h5,h6) {
-    margin: 0;
-    text-align: center;
-}
-
-:is(h1,h2,h3,h4,h5,h6) {
-    margin-top: var(--typography-spacing-vertical);
-}
-
-.buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(0%,1fr));;
-    gap: 1rem;
-}
-
-</style>
 
 <article class="session">
     <header> 
@@ -58,9 +24,44 @@ header > :is(h1,h2,h3,h4,h5,h6) {
     </div>
     <footer>
         <div class="buttons">
-            <button>Cancella</button>
-            <button>Modifica</button>
-            <button>Iscriviti</button>
+            <button class="outline">Cancella</button>
+            <button class="outline">Modifica</button>
+            <button class="">Iscriviti</button>
         </div>
     </footer>
 </article>
+
+
+<style>
+    .session {
+        max-width: 45em;
+    }
+    
+    header {
+        margin-bottom: 1rem;
+    }
+    
+    footer {
+        margin-top: 1rem;
+    }
+    
+    footer button {
+        margin: 0;
+    }
+    
+    header > :is(h1,h2,h3,h4,h5,h6) {
+        margin: 0;
+        text-align: center;
+    }
+    
+    :is(h1,h2,h3,h4,h5,h6) {
+        margin-top: var(--typography-spacing-vertical);
+    }
+    
+    .buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(0%,1fr));;
+        gap: 1rem;
+    }
+    
+    </style>

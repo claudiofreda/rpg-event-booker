@@ -11,7 +11,7 @@
             <li><a href="">Log Out</a></li>
             <li><a href="">My Profile</a></li>
         {:else}
-            <li><a href="">Log In</a></li>
+            <li><a role="button" class="outline contrast" href="">Log In</a></li>
         {/if}
     </ul>
 </nav>

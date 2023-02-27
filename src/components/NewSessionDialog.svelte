@@ -2,6 +2,7 @@
     import SlotName from '$root/components/SlotName.svelte';
 	import { createEventDispatcher } from "svelte";
 
+    export let defaultSlotId: number | null = null;
     export let event: any;
     export let sessionData = {
         name: "",
@@ -86,7 +87,7 @@
                 Slot
                 <select name="slotId" aria-label="Slot" id="slot">
                     {#each event.slots as slot}
-                        <option value={slot.id}>
+                        <option value={slot.id} selected={slot.id == defaultSlotId || undefined}>
                             <SlotName slot={slot} />
                         </option>
                     {/each}

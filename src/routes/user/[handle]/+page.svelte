@@ -41,5 +41,5 @@
 
 {#each eventsFiltered as event, index}
 <h2><a href="/event/{event.id}">{event.name} - <FormattedDate date={event.startTime} /></a></h2>
-    <SessionGrid sessions={sessionPerEvent[index]}/>
+    <SessionGrid sessions={sessionPerEvent[index]} />
 {/each}

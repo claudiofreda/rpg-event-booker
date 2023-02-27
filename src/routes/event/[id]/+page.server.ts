@@ -47,11 +47,10 @@ export const actions : Actions = {
     },
     modifySession: async ({ cookies, request }) => {
         const form = await request.formData();
+        const sessionId = parseInt(String(form.get('sessionId')));
 
         await prisma.session.update({
-            where: {
-                id: parseInt(String(form.get('sessionId')))
-            },
+            where: { id: sessionId },
             data: {
                 name: String(form.get('name')),
                 description: String(form.get('description')),
@@ -66,12 +65,9 @@ export const actions : Actions = {
     },
     deleteSession: async ({ cookies, request }) => {
         const form = await request.formData();
+        const sessionId = parseInt(String(form.get('sessionId')));
 
-        await prisma.session.delete({
-            where: {
-                id: parseInt(String(form.get('sessionId')))
-            }
-        });
+        await prisma.session.delete({ where: { id: sessionId } });
 
         return {
             success: true

@@ -12,11 +12,13 @@
 
     let currentDialog = "";
     let editedSession: any;
+    let defaultSlotId: number | null;
 
     let closeDialog = () => {
         if (currentDialog) console.log("dialog closed");
         currentDialog = "";
         editedSession = null;
+        defaultSlotId = null;
     }
 
     let openDialog = (dialogName: string, further = (event: any) => {}) => {
@@ -27,11 +29,6 @@
         }
     }
 
-    let setEditedSession = (session: any) => {
-        console.log(session);
-        editedSession = session;
-    }
-
     if (form?.success) {
         closeDialog();
         form = null;
@@ -40,8 +37,9 @@
 
 <style>
 
-button {
-    margin: 1em 0em;
+button.new-session {
+    min-height: 20em;
+    margin: 0;
 }
 
 </style>
@@ -68,16 +66,18 @@ button {
     </h2>
     <SessionGrid
         sessions={slot.sessions}
-        on:openForModify={openDialog("modifySession", (event) => { setEditedSession(event.detail.session) })}
-        on:openForDelete={openDialog("deleteSession", (event) => { setEditedSession(event.detail.session) })}
-    />
-    <button on:click={openDialog("createSession")}>
-        Crea nuova sessione
-    </button>
+        on:openForModify={openDialog("modifySession", (event) => { editedSession = event.detail.session; })}
+        on:openForDelete={openDialog("deleteSession", (event) => { editedSession = event.detail.session; })}
+    >
+        <button class="new-session outline" on:click={openDialog("createSession", () => { defaultSlotId = slot.id })}>
+            Crea nuova sessione
+        </button>
+    </SessionGrid>
 {/each}
 
 {#if currentDialog == "createSession"}
     <NewSessionDialog
+        defaultSlotId={defaultSlotId}
         event={data.event}
         on:closeDialog={closeDialog}
         />

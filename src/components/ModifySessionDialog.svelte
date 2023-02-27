@@ -3,11 +3,7 @@
 	import { createEventDispatcher } from "svelte";
 
     export let event: any;
-    export let sessionData = {
-        name: "",
-        game: "",
-        description: ""
-    };
+    export let sessionData: any;
 
     let dispatch = createEventDispatcher();
 
@@ -42,17 +38,18 @@
 
 <dialog open>
     <article>
-        <header><strong>Crea nuova sessione</strong></header>
+        <header><strong>Modifica sessione</strong></header>
         
-        <form id="newsession" action="?/createSession" method="post" autocomplete="off">
-            
+        <form id="modifySession" action="?/modifySession" method="post" autocomplete="off">
+            <input type=hidden name="sessionId" value={sessionData.id} />
+
             <div class="grid">
                 <label for="name">
                     Nome sessione
                     <input
                         id="name"
                         aria-label="Enter your Tweet"
-                        bind:value={sessionData.name}
+                        value={sessionData.name}
                         name="name"
                         placeholder="What's your hot take?"
                         type="text"
@@ -64,7 +61,7 @@
                     <input
                         id="game"
                         aria-label="Enter your Tweet"
-                        bind:value={sessionData.game}
+                        value={sessionData.game}
                         name="game"
                         placeholder="What's your hot take?"
                         type="text"
@@ -78,7 +75,7 @@
                     aria-label="Enter your Tweet"
                     name="description"
                     placeholder="What's your hot take?"
-                    bind:value={sessionData.description}
+                    value={sessionData.description}
                 />
             </label>
             
@@ -86,17 +83,17 @@
                 Slot
                 <select name="slotId" aria-label="Slot" id="slot">
                     {#each event.slots as slot}
-                        <option value={slot.id}>
+                        <option value={slot.id} selected={slot.id == sessionData.slotId || undefined}>
                             <SlotName slot={slot} />
                         </option>
                     {/each}
                 </select>
             </label>
-            
         </form>
+
         <footer>
-            <a href="#cancelNewSession" role="button" class="secondary" on:click={handleClose}>Annulla</a>
-            <input form="newsession" type="submit" role="button" value="Conferma"/>
+            <a href="#cancelModify" role="button" class="secondary" on:click={handleClose}>Annulla</a>
+            <input form="modifySession" type="submit" role="button" value="Conferma"/>
         </footer>
     </article>
 </dialog>

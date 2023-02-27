@@ -2,6 +2,17 @@
     export let session: any;
     export let showFacilitator = true;
     export let showEvent = false;
+
+    import { createEventDispatcher } from "svelte";
+    let dispatch = createEventDispatcher();
+
+    let handleModify = () => {
+        dispatch("openForModify", { session: session });
+    }
+
+    let handleDelete = () => {
+        dispatch("openForDelete", { session: session });
+    }
 </script>
 
 <article class="session">
@@ -24,8 +35,8 @@
     </div>
     <footer>
         <div class="buttons">
-            <button class="outline">Cancella</button>
-            <button class="outline">Modifica</button>
+            <button class="outline" on:click={handleDelete}>Cancella</button>
+            <button class="outline" on:click={handleModify}>Modifica</button>
             <button class="">Iscriviti</button>
         </div>
     </footer>

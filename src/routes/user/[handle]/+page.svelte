@@ -1,7 +1,6 @@
 <script lang="ts">
     export let data: any;
     import SessionGrid from '$root/components/SessionGrid.svelte';
-    import FormattedTime from '$root/components/FormattedTime.svelte';
     import FormattedDate from '$root/components/FormattedDate.svelte';
 
     function uniqBy(array: any, fnKey: any) {

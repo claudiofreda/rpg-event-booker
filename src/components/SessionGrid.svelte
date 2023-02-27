@@ -28,6 +28,6 @@
 
 <div class="sessions-grid">
     {#each sessions as session}
-        <Session session={session} />
+        <Session session={session} on:openForDelete on:openForModify />
     {/each}
 </div>

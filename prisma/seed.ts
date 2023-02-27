@@ -4,7 +4,7 @@ import PrismaClientPkg, { Prisma } from '@prisma/client'
 const PrismaClient = PrismaClientPkg.PrismaClient
 const prisma = new PrismaClient() 
 
-const loremipsum = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. At auctor urna nunc id cursus metus. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat. Erat imperdiet sed euismod nisi porta lorem mollis aliquam ut. A diam sollicitudin tempor id eu nisl. Neque aliquam vestibulum morbi blandit. Morbi blandit cursus risus at. Proin fermentum leo vel orci porta non pulvinar neque. Ac turpis egestas sed tempus urna et pharetra pharetra. Ac odio tempor orci dapibus ultrices.</p>"
+const loremipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. At auctor urna nunc id cursus metus. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat. Erat imperdiet sed euismod nisi porta lorem mollis aliquam ut. A diam sollicitudin tempor id eu nisl. Neque aliquam vestibulum morbi blandit. Morbi blandit cursus risus at. Proin fermentum leo vel orci porta non pulvinar neque. Ac turpis egestas sed tempus urna et pharetra pharetra. Ac odio tempor orci dapibus ultrices."
 
 async function seed() {
     let users : Prisma.UserCreateInput[] = [

@@ -31,7 +31,7 @@
     <p><strong>Gioco</strong>: {session.game}</p>
     <p><strong>Iscritti:</strong> {session.bookings.length} su {session.maxBookings} </p> 
     <div class="description">
-        {@html session.description}
+        {session.description}
     </div>
     <footer>
         <div class="buttons">

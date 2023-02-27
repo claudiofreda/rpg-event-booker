@@ -25,7 +25,7 @@
         gap: 1em;
     }
 
-    @media (max-width: 992px) {
+    @media (max-width: 991.98px) {
         .session-grid {
             grid-template-columns: 1fr;
         }

@@ -7,6 +7,7 @@
     import NewSessionDialog from '$root/components/NewSessionDialog.svelte';
 	import ModifySessionDialog from '$root/components/ModifySessionDialog.svelte';
 	import DeleteSessionDialog from '$root/components/DeleteSessionDialog.svelte';
+	import SlotName from '$root/components/SlotName.svelte';
 
     let facilitators = data.event.slots.flatMap( (slot: any) => slot.sessions ).map( (session: any) => session.facilitator );
 
@@ -29,7 +30,7 @@
         }
     }
 
-    if (form?.success) {
+    $: if (form?.success) {
         closeDialog();
         form = null;
     }
@@ -62,8 +63,7 @@ button.new-session {
 </p>
 
 {#each data.event.slots as slot}
-    <h2>Slot from <FormattedTime time={slot.startTime} /> to <FormattedTime time={slot.endTime} />
-    </h2>
+    <h2><SlotName slot={slot}/></h2>
     <SessionGrid
         sessions={slot.sessions}
         on:openForModify={openDialog("modifySession", (event) => { editedSession = event.detail.session; })}

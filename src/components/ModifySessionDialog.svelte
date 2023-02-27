@@ -1,6 +1,7 @@
 <script lang="ts">
     import SlotName from '$root/components/SlotName.svelte';
 	import { createEventDispatcher } from "svelte";
+    import { enhance } from '$app/forms'
 
     export let event: any;
     export let sessionData: any;
@@ -21,7 +22,7 @@
         margin-top: 0;
     }
     
-    dialog >article {
+    dialog > article {
         flex-grow: 1;
     }
     
@@ -32,7 +33,8 @@
     }
     
     textarea {
-      resize: none;
+        resize: vertical;
+        height: 15em;
     }
 </style>
 
@@ -40,7 +42,7 @@
     <article>
         <header><strong>Modifica sessione</strong></header>
         
-        <form id="modifySession" action="?/modifySession" method="post" autocomplete="off">
+        <form use:enhance id="modifySession" action="?/modifySession" method="post" autocomplete="off">
             <input type=hidden name="sessionId" value={sessionData.id} />
 
             <div class="grid">
@@ -48,10 +50,10 @@
                     Nome sessione
                     <input
                         id="name"
-                        aria-label="Enter your Tweet"
+                        aria-label="Nome sessione"
                         value={sessionData.name}
                         name="name"
-                        placeholder="What's your hot take?"
+                        placeholder=""
                         type="text"
                     />
                 </label>
@@ -60,10 +62,10 @@
                     Nome gioco
                     <input
                         id="game"
-                        aria-label="Enter your Tweet"
+                        aria-label="Nome gioco"
                         value={sessionData.game}
                         name="game"
-                        placeholder="What's your hot take?"
+                        placeholder=""
                         type="text"
                     />
                 </label>
@@ -72,9 +74,9 @@
             <label>
                 Descrizione
                 <textarea
-                    aria-label="Enter your Tweet"
+                    aria-label="Descrizione"
                     name="description"
-                    placeholder="What's your hot take?"
+                    placeholder=""
                     value={sessionData.description}
                 />
             </label>
